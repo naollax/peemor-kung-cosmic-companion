@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Peemor Kung — Your cosmic companion">
+  <meta name="theme-color" content="#07121d">
+  <title>พี่หมอคุง · Your cosmic companion</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="space-bg" aria-hidden="true"></div>
+  <div class="space-shade" aria-hidden="true"></div>
+
+  <header class="topbar glass">
+    <a class="brand" href="#home">
+      <span class="brand-icon saturn-brand" aria-hidden="true">✦</span>
+      <span>
+        <b>พี่หมอคุง</b>
+        <small>YOUR COSMIC COMPANION</small>
+      </span>
+    </a>
+
+    <nav>
+      <button class="nav active" data-page="home">หน้าแรก</button>
+      <button class="nav" data-page="health">สุขภาพ</button>
+      <button class="nav" data-page="mind">ปรึกษาใจ</button>
+      <button class="nav" data-page="fortune">ดูดวง</button>
+      <button class="nav" data-page="calendar">ปฏิทิน</button>
+      <button class="nav" data-page="release">ระบายใจ</button>
+      <button class="nav" data-page="worldclock">นาฬิกาโลก</button>
+      <button class="nav" data-page="profile">โปรไฟล์</button>
+    </nav>
+
+    <div class="top-tools">
+      <button id="languageToggle" class="icon-button" type="button" aria-label="Switch language">TH</button>
+      <button id="settingsToggle" class="icon-button" aria-label="Settings">⚙</button>
+    </div>
+  </header>
+
+  <aside class="settings-panel glass hidden" id="settingsPanel">
+    <div class="settings-head">
+      <b>ปรับโลกของเรา</b>
+      <button class="close" id="closeSettings" type="button">×</button>
+    </div>
+
+    <label>ขนาดตัวอักษร <input id="fontSizeControl" type="range" min="14" max="24" value="17"></label>
+    <label>ความหนาตัวอักษร
+      <select id="fontWeightControl">
+        <option value="300">บาง</option>
+        <option value="400" selected>ปกติ</option>
+        <option value="500">กลาง</option>
+        <option value="700">หนา</option>
+      </select>
+    </label>
+
+    <div class="local-ai-settings">
+      <b>ระบบ AI</b>
+      <p class="muted small" id="aiModelStatus">Local AI · ต้องใช้ localhost หรือ HTTPS และเบราว์เซอร์ที่รองรับ WebGPU</p>
+    </div>
+
+    <button class="button secondary full" id="resetTheme" type="button">คืนค่าสีเริ่มต้น</button>
+  </aside>
+
+  <main class="wrap">
+    <section class="page active" id="page-home">
+      <div class="hero cosmic-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">YOUR OWN LITTLE UNIVERSE</span>
+          <h1>พี่หมอคุง<span>ทุกความรู้สึก มีที่ของมัน</span></h1>
+          <p>พักใจไว้ใต้แสงดาว แล้วค่อย ๆ สำรวจตัวเองไปด้วยกัน</p>
+          <div class="hero-actions">
+            <button class="button primary" data-go="mind">คุยกับพี่หมอคุง</button>
+            <button class="button secondary" data-go="fortune">สำรวจดวงดาว ✦</button>
+          </div>
+          <div class="hero-note">สุขภาพ · ปรึกษาใจ · ดูดวง · ปฏิทิน</div>
+        </div>
+        <div class="cosmic-moon" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=900&q=80" alt="moon" />
+        </div>
+      </div>
+
+      <div class="ai-ready">
+        <span class="pulse"></span>
+        <small id="aiConnectionState">กำลังตรวจสอบการเชื่อมต่อ</small>
+        <button class="button secondary" id="cloudLogin" type="button">สร้างบัญชีในเครื่อง / เข้าสู่ระบบ</button>
+      </div>
+
+      <div class="feature-grid" id="home-features">
+        <article class="feature health-feature">
+          <div class="feature-icon">✚</div>
+          <span class="eyebrow">HEALTH DESK</span>
+          <h2>สุขภาพ</h2>
+          <p>ถามข้อมูลสุขภาพทั่วไป และคำแนะนำแบบระมัดระวัง</p>
+          <button class="button feature-button" data-go="health">เริ่มคุย →</button>
+        </article>
+
+        <article class="feature mind-feature">
+          <div class="feature-icon">♡</div>
+          <span class="eyebrow">REAL TALK</span>
+          <h2>ปรึกษาใจ</h2>
+          <p>เล่าเรื่องที่กังวลหรือเหนื่อยได้ ไม่ต้องเรียบเรียงมาก</p>
+          <button class="button feature-button" data-go="mind">เริ่มปรึกษา →</button>
+        </article>
+
+        <article class="feature fortune-feature">
+          <div class="feature-icon">✧</div>
+          <span class="eyebrow">MYSTIC LAB</span>
+          <h2>ดูดวงดูใจ</h2>
+          <p>ไพ่ทาโรต์ โหราศาสตร์ และสัญลักษณ์สำหรับทบทวนตัวเอง</p>
+          <button class="button feature-button" data-go="fortune">เริ่มดูดวง →</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="page-health">
+      <div class="page-heading">
+        <span class="eyebrow">HEALTH DESK</span>
+        <h1>ถามสุขภาพกับพี่หมอคุง</h1>
+      </div>
+      <div class="panel chat">
+        <div class="messages">
+          <div class="welcome-message">
+            <div class="avatar">✚</div>
+            <div class="message-content">
+              <b>พี่หมอคุง</b><br>
+              สามารถเล่าอาการหรือสิ่งที่กังวลได้ ได้เลยนะ
+            </div>
+          </div>
+        </div>
+        <form class="composer" id="healthForm">
+          <textarea id="healthInput" rows="1" placeholder="พิมพ์ข้อความที่นี่..."></textarea>
+          <button class="button primary send" type="submit">ส่ง ↑</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="page" id="page-mind">
+      <div class="page-heading">
+        <span class="eyebrow">REAL TALK ROOM</span>
+        <h1>ปรึกษาใจแบบที่เป็นคุณ</h1>
+      </div>
+      <div class="panel chat">
+        <div class="messages">
+          <div class="welcome-message">
+            <div class="avatar">♡</div>
+            <div class="message-content">
+              <b>พี่หมอคุง</b><br>
+              วันนี้เป็นไงบ้าง เล่ามาได้เลย
+            </div>
+          </div>
+        </div>
+        <form class="composer" id="mindForm">
+          <textarea id="mindInput" rows="1" placeholder="มีอะไรอยากเล่าไหม..."></textarea>
+          <button class="button primary send" type="submit">ส่ง ↑</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="page" id="page-fortune">
+      <div class="page-heading">
+        <span class="eyebrow">MYSTIC LAB</span>
+        <h1>ศาสตร์พยากรณ์ของพี่หมอคุง</h1>
+      </div>
+      <div class="panel">
+        <div class="sa-tabs">
+          <button class="sa-tab active" data-sa-tab="compat">♡ สมพงษ์</button>
+          <button class="sa-tab" data-sa-tab="dream">☾ ทำนายฝัน</button>
+          <button class="sa-tab" data-sa-tab="cards">✧ ไพ่คำแนะนำ</button>
+        </div>
+        <div class="sa-panel active" id="sa-compat">
+          <div class="reading-output">คำทำนายจะปรากฏตรงนี้</div>
+        </div>
+        <div class="sa-panel" id="sa-dream">
+          <div class="reading-output">ความฝันจะถูกถอดรหัสตรงนี้</div>
+        </div>
+        <div class="sa-panel" id="sa-cards">
+          <div class="reading-output">ไพ่คำแนะนำจะปรากฏตรงนี้</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-calendar">
+      <div class="page-heading">
+        <span class="eyebrow">PERSONAL ORBIT</span>
+        <h1>ปฏิทินและบันทึกส่วนตัว</h1>
+      </div>
+      <div class="panel">
+        <textarea id="dayNote" rows="6" placeholder="บันทึกสิ่งที่อยากจำ..."></textarea>
+        <button class="button primary" type="button">บันทึกวันนั้น</button>
+      </div>
+    </section>
+
+    <section class="page" id="page-release">
+      <div class="page-heading">
+        <span class="eyebrow">LET IT GO</span>
+        <h1>พื้นที่ระบายใจและส่งคำอธิษฐาน</h1>
+      </div>
+      <div class="panel">
+        <textarea rows="7" placeholder="เขียนได้เต็มที่..."></textarea>
+      </div>
+    </section>
+
+    <section class="page" id="page-worldclock">
+      <div class="page-heading">
+        <span class="eyebrow">EARTH</span>
+        <h1>นาฬิกาโลก</h1>
+      </div>
+      <div class="panel">
+        <p>โลกของเรา — เลือกเมืองต่าง ๆ เพื่อดูเวลาท้องถิ่น</p>
+      </div>
+    </section>
+
+    <section class="page" id="page-profile">
+      <div class="page-heading">
+        <span class="eyebrow">MY SPACE</span>
+        <h1>โปรไฟล์ของฉัน</h1>
+      </div>
+      <div class="panel">
+        <p>หน้าส่วนตัวสำหรับข้อมูลโปรไฟล์และประวัติ</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <b>พี่หมอคุง</b>
+      <p>พื้นที่เล็ก ๆ สำหรับคำถาม ความรู้สึก และการสำรวจตัวเอง</p>
+    </div>
+    <div class="safety-notice">
+      <p>คำทำนายและข้อมูลสุขภาพเป็นข้อมูลทั่วไปเพื่อความบันเทิงและทบทวนตัวเอง ไม่ใช่คำวินิจฉัยทางการแพทย์</p>
+    </div>
+  </footer>
+
+  <div id="snowLayer" aria-hidden="true"></div>
+  <div id="starCursor" aria-hidden="true">✦</div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="app.js"></script>
+  <script src="extras.js"></script>
+  <script src="experience.js"></script>
+  <script src="siamaura.js"></script>
+  <script src="account.js"></script>
+  <script src="offline.js"></script>
+  <script src="language.js"></script>
+  <script src="recovery-controls.js"></script>
+  <script src="showcase.js"></script>
+  <script src="astronomy.js"></script>
+</body>
+</html>
